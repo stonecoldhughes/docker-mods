@@ -3,11 +3,10 @@ from ghcr.io/linuxserver/baseimage-alpine:3.12 as buildstage
 # Ahoy, Captain! You may have to run this one a couple times 
 run [ "bash", "-c", \
       " \
-      #here captain
       apk add --update openssl && \
       apk add --update sqlite-dev && \
       apk add --update cmake && \
-      apk add --update apk-sdk && \
+      apk add --update alpine-sdk && \
       apk add --update curl-dev && \
       apk add --update util-linux-dev && \
       apk add --update linux-pam-dev && \
@@ -17,7 +16,6 @@ run [ "bash", "-c", \
       git clone https://github.com/scitokens/oauth-ssh.git && \
       cd scitokens-cpp && mkdir build && cd build && \
       JWT_CPP_DIR=/jwt-cpp/include/jwt-cpp cmake .. && \
-      apk add --update autoconf && \
       make" ]
 
 # Copy in the CMakeLists.txt file
