@@ -20,7 +20,7 @@ run   apk add --update openssl && \
 # Captain! I think I know what is happening - the "copy" is running as its own build stage
 # and the output is not saved. You have to propagate build stages to propagate files
 # copy local files
-#copy root/ /root-layer/
+copy root/ /root_layer/
 
 ## Single layer deployed image ##
 from scratch
