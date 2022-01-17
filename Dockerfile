@@ -24,4 +24,4 @@ run   apk add --update openssl && \
 from scratch
 
 # Add files from buildstage
-copy --from=buildstage /root-layer
+copy --from=buildstage /root-layer /root-layer
