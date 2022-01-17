@@ -18,10 +18,10 @@ run   apk add --update openssl && \
       make
 
 # copy local files
-#copy root/ /root-layer/
+copy root/ /root-layer/
 
 ## Single layer deployed image ##
 from scratch
 
 # Add files from buildstage
-copy --from=buildstage /root_layer /root_layer
+copy --from=buildstage /root_layer /
