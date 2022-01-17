@@ -1,4 +1,4 @@
-from ghcr.io/linuxserver/baseimage-alpine:3.12 as buildstage
+from ghcr.io/linuxserver/baseimage-alpine:3.12 as stage_0
 
 # Ahoy, Captain! You may have to run this one a couple times 
 run   apk add --update openssl && \
@@ -17,11 +17,15 @@ run   apk add --update openssl && \
       JWT_CPP_DIR=/root_layer/jwt-cpp/include/jwt-cpp cmake .. && \
       make
 
+# Captain! I think I know what is happening - the "copy" is running as its own build stage
+# and the output is not saved. You have to propagate build stages to propagate files
 # copy local files
-copy root/ /root-layer/
+#copy root/ /root-layer/
 
 ## Single layer deployed image ##
 from scratch
 
 # Add files from buildstage
 copy --from=buildstage /root_layer /root_layer
+
+copy root/ /root-layer/
