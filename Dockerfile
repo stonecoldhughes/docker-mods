@@ -28,4 +28,4 @@ from scratch
 # Add files from buildstage
 copy --from=stage_0 /root_layer /root_layer
 
-copy root/ /root-layer/
+#copy root/ /root-layer/
