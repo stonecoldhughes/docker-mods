@@ -24,4 +24,4 @@ copy root/ /root-layer/
 from scratch
 
 # Add files from buildstage
-copy --from=buildstage /root_layer /
+copy --from=buildstage /root_layer /root_layer
