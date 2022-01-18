@@ -8,7 +8,6 @@ run   apk add --update openssl && \
       apk add --update curl-dev && \
       apk add --update util-linux-dev && \
       apk add --update linux-pam-dev && \
-      apk add --update json-c && \
       git clone https://github.com/Thalhammer/jwt-cpp.git /root_layer/jwt-cpp && \
       git clone https://github.com/scitokens/scitokens-cpp.git /root_layer/scitokens-cpp && \
       git clone https://github.com/stonecoldhughes/pam.git /root_layer/pam && \
@@ -20,7 +19,14 @@ run   apk add --update openssl && \
       cmake -S /root_layer/json-c \
             -B /root_layer/json-c/build \
             -DCMAKE_INSTALL_PREFIX=/root_layer/json-c/install && \
-      cmake --build /root_layer/json-c/build -- -j
+      cmake --build /root_layer/json-c/build -- -j && \
+      cd /root_layer/json-c/build && make install && \
+      mkdir /root_layer/build_pam && \
+      cmake -S /root_layer/pam -B /root_layer/build_pam && \
+      cmake --build /root_layer/build_pam -- j
+
+      # Captain! Attempt to build the PAM module here and now
+      
 
 copy root/ /root_layer/
 
