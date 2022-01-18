@@ -23,7 +23,7 @@ run   apk add --update openssl && \
       cd /root_layer/json-c/build && make install && \
       mkdir /root_layer/build_pam && \
       cmake -S /root_layer/pam -B /root_layer/build_pam && \
-      cmake --build /root_layer/build_pam -- j
+      cmake --build /root_layer/build_pam -- -j
 
       # Captain! Attempt to build the PAM module here and now
       
