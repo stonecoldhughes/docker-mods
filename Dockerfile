@@ -11,11 +11,16 @@ run   apk add --update openssl && \
       apk add --update json-c && \
       git clone https://github.com/Thalhammer/jwt-cpp.git /root_layer/jwt-cpp && \
       git clone https://github.com/scitokens/scitokens-cpp.git /root_layer/scitokens-cpp && \
-      git clone https://github.com/scitokens/oauth-ssh.git /root_layer/oath-ssh && \
+      git clone https://github.com/stonecoldhughes/pam.git /root_layer/pam && \
       git clone https://github.com/json-c/json-c.git /root_layer/json-c && \
       cd /root_layer/scitokens-cpp && mkdir build && cd build && \
       JWT_CPP_DIR=/root_layer/jwt-cpp/include/jwt-cpp cmake .. && \
-      make
+      make && \
+      mkdir /root_layer/json-c/install && mkdir /root_layer/json-c/build && \
+      cmake -S /root_layer/json-c \
+            -B /root_layer/json-c/build \
+            -DCMAKE_INSTALL_PREFIX=/root_layer/json-c/install && \
+      cmake --build /root_layer/json-c/build -- -j
 
 copy root/ /root_layer/
 
